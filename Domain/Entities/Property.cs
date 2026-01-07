@@ -1,3 +1,5 @@
+using Api.Domain.Enums;
+
 namespace Api.Domain.Entities;
 
 public class Property
@@ -14,7 +16,7 @@ public class Property
   public int? Bedrooms { get; set; }
   public int? Bathrooms { get; set; }
   public decimal? Surface { get; set; } // m²
-  public string Status { get; set; } = "Draft"; // Draft, Published, Sold, Rented
+  public PropertyStatus Status { get; set; } = PropertyStatus.Draft; // Enum
   public DateTime CreatedAt { get; set; }
   public DateTime UpdatedAt { get; set; }
 

@@ -1,3 +1,5 @@
+using Api.Domain.Enums;
+
 namespace Api.Application.DTOs.Property;
 
 public class PropertyDto
@@ -13,7 +15,7 @@ public class PropertyDto
   public int? Bedrooms { get; set; }
   public int? Bathrooms { get; set; }
   public decimal? Surface { get; set; }
-  public string Status { get; set; } = string.Empty;
+  public PropertyStatus Status { get; set; }
   public DateTime CreatedAt { get; set; }
   public DateTime UpdatedAt { get; set; }
 }

@@ -58,7 +58,7 @@ public class AppDbContext : DbContext
               .OnDelete(DeleteBehavior.Cascade);
     });
 
-    // ← AJOUTE ICI : Property
+   // Property
     modelBuilder.Entity<Property>(entity =>
     {
       entity.HasKey(e => e.Id);
@@ -69,6 +69,9 @@ public class AppDbContext : DbContext
       entity.Property(e => e.UpdatedAt).HasDefaultValueSql("NOW()");
       entity.Property(e => e.Price).HasPrecision(18, 2);
       entity.Property(e => e.Surface).HasPrecision(10, 2);
+      
+      entity.Property(e => e.Status)
+          .HasConversion<string>();
 
       entity.HasOne(e => e.Organization)
               .WithMany()
@@ -85,6 +88,9 @@ public class AppDbContext : DbContext
       entity.HasIndex(e => e.Status);
       entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
       entity.Property(e => e.UpdatedAt).HasDefaultValueSql("NOW()");
+      
+      entity.Property(e => e.Status)
+          .HasConversion<string>();
 
       entity.HasOne(e => e.Organization)
               .WithMany()
@@ -106,6 +112,9 @@ public class AppDbContext : DbContext
       entity.HasIndex(e => e.ScheduledAt);
       entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
       entity.Property(e => e.UpdatedAt).HasDefaultValueSql("NOW()");
+      
+      entity.Property(e => e.Status)
+          .HasConversion<string>();
 
       entity.HasOne(e => e.Property)
               .WithMany(p => p.Visits)

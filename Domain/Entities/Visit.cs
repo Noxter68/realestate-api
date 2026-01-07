@@ -1,3 +1,5 @@
+using Api.Domain.Enums;
+
 namespace Api.Domain.Entities;
 
 public class Visit
@@ -9,7 +11,7 @@ public class Visit
   public string VisitorEmail { get; set; } = string.Empty;
   public string VisitorPhone { get; set; } = string.Empty;
   public DateTime ScheduledAt { get; set; }
-  public string Status { get; set; } = "Scheduled"; // Scheduled, Completed, Cancelled
+  public VisitStatus Status { get; set; } = VisitStatus.Scheduled; //  Enum
   public string? Notes { get; set; }
   public DateTime CreatedAt { get; set; }
   public DateTime UpdatedAt { get; set; }

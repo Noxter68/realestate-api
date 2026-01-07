@@ -2,6 +2,7 @@
 
 using Api.Application.DTOs.Property;
 using Api.Domain.Entities;
+using Api.Domain.Enums;
 using Api.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,12 +33,12 @@ public class PropertyService: IPropertyService
       Bedrooms = request.Bedrooms,
       Bathrooms = request.Bathrooms,
       Surface = request.Surface,
-      Status = "Draft",
+      Status = PropertyStatus.Draft,
       CreatedAt = DateTime.UtcNow,
       UpdatedAt = DateTime.UtcNow
     };
 
-    _context.Properties.Add((property));
+    _context.Properties.Add(property);
     await _context.SaveChangesAsync();
     
     return MapToDto(property);
@@ -78,7 +79,7 @@ public class PropertyService: IPropertyService
     if (request.Bedrooms.HasValue) property.Bedrooms = request.Bedrooms;
     if (request.Bathrooms.HasValue) property.Bathrooms = request.Bathrooms;
     if (request.Surface.HasValue) property.Surface = request.Surface;
-    if (request.Status != null) property.Status = request.Status;
+    if (request.Status.HasValue) property.Status = request.Status.Value;
 
     property.UpdatedAt = DateTime.UtcNow;
 

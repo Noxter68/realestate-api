@@ -1,3 +1,5 @@
+using Api.Domain.Enums;
+
 namespace Api.Domain.Entities;
 
 public class Lead
@@ -9,7 +11,7 @@ public class Lead
   public string Email { get; set; } = string.Empty;
   public string Phone { get; set; } = string.Empty;
   public string Message { get; set; } = string.Empty;
-  public string Status { get; set; } = "New"; // New, Contacted, Qualified, Lost
+  public LeadStatus Status { get; set; } = LeadStatus.New;
   public DateTime CreatedAt { get; set; }
   public DateTime UpdatedAt { get; set; }
 

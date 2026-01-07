@@ -1,3 +1,5 @@
+using Api.Domain.Enums;
+
 namespace Api.Application.DTOs.Property;
 
 public class UpdatePropertyRequest
@@ -12,5 +14,5 @@ public class UpdatePropertyRequest
   public int? Bedrooms { get; set; }
   public int? Bathrooms { get; set; }
   public decimal? Surface { get; set; }
-  public string? Status { get; set; }
+  public PropertyStatus? Status { get; set; }
 }
