@@ -63,6 +63,7 @@ builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 builder.Services.AddScoped<IPropertyService, PropertyService>();
 builder.Services.AddScoped<ILeadService, LeadService>();
+builder.Services.AddScoped<IVisitService, VisitService>();
 
 builder.Services.AddAuthentication(options =>
 {
