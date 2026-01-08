@@ -65,6 +65,7 @@ builder.Services.AddScoped<IPropertyService, PropertyService>();
 builder.Services.AddScoped<ILeadService, LeadService>();
 builder.Services.AddScoped<IVisitService, VisitService>();
 builder.Services.AddScoped<IInternalNoteService, InternalNoteService>();
+builder.Services.AddScoped<IPublicService, PublicService>();
 
 builder.Services.AddAuthentication(options =>
 {
