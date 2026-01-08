@@ -1,5 +1,6 @@
 using Api.Application.DTOs.Public;
 using Api.Application.Services;
+using Api.Domain.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
@@ -24,7 +25,7 @@ public class PublicController : ControllerBase
         [FromQuery] decimal? minPrice,
         [FromQuery] decimal? maxPrice,
         [FromQuery] string? city,
-        [FromQuery] string? type)
+        [FromQuery] PropertyType? type)
     {
         var properties = await _publicService.GetPropertiesByAgency(slug, minPrice, maxPrice, city, type);
         return Ok(properties);

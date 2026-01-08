@@ -20,7 +20,7 @@ public class PublicService : IPublicService
         decimal? minPrice,
         decimal? maxPrice,
         string? city,
-        string? type)
+        PropertyType? type)
     {
         // Trouver l'organisation par slug
         var organization = await _context.Organizations
@@ -43,8 +43,8 @@ public class PublicService : IPublicService
         if (!string.IsNullOrWhiteSpace(city))
             query = query.Where(p => p.City.ToLower() == city.ToLower());
 
-        if (!string.IsNullOrWhiteSpace(type))
-            query = query.Where(p => p.Type.ToLower() == type.ToLower());
+        if (type.HasValue)
+            query = query.Where(p => p.Type == type.Value);
 
         // Tri par date de création (plus récentes en premier)
         var properties = await query

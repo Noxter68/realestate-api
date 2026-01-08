@@ -71,7 +71,7 @@ public class PropertyService: IPropertyService
 
     if (request.Title != null) property.Title = request.Title;
     if (request.Description != null) property.Description = request.Description;
-    if (request.Type != null) property.Type = request.Type;
+    if (request.Type != null) property.Type = request.Type.Value;
     if (request.Price.HasValue) property.Price = request.Price.Value;
     if (request.City != null) property.City = request.City;
     if (request.Address != null) property.Address = request.Address;

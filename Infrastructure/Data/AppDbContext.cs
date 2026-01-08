@@ -72,6 +72,9 @@ public class AppDbContext : DbContext
       
       entity.Property(e => e.Status)
           .HasConversion<string>();
+      
+      entity.Property(e => e.Type)
+          .HasConversion<string>();
 
       entity.HasOne(e => e.Organization)
               .WithMany()

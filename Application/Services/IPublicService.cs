@@ -1,4 +1,5 @@
 using Api.Application.DTOs.Public;
+using Api.Domain.Enums;
 
 namespace Api.Application.Services;
 
@@ -9,7 +10,7 @@ public interface IPublicService
         decimal? minPrice,
         decimal? maxPrice,
         string? city,
-        string? type
+        PropertyType? type
     );
     
     Task<PublicPropertyDetailDto?> GetPropertyById(Guid propertyId);
