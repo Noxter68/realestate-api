@@ -136,6 +136,9 @@ public class AppDbContext : DbContext
       entity.HasIndex(e => e.EntityId);
       entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
       entity.Property(e => e.UpdatedAt).HasDefaultValueSql("NOW()");
+      
+      entity.Property(e => e.EntityType)
+          .HasConversion<string>();
 
       entity.HasOne(e => e.Organization)
               .WithMany()

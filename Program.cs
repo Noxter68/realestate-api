@@ -64,6 +64,7 @@ builder.Services.AddScoped<IJwtGenerator, JwtGenerator>();
 builder.Services.AddScoped<IPropertyService, PropertyService>();
 builder.Services.AddScoped<ILeadService, LeadService>();
 builder.Services.AddScoped<IVisitService, VisitService>();
+builder.Services.AddScoped<IInternalNoteService, InternalNoteService>();
 
 builder.Services.AddAuthentication(options =>
 {
