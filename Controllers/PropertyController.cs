@@ -1,3 +1,5 @@
+using System;
+using System.Threading.Tasks;
 using Api.Application.DTOs.Property;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +26,18 @@ public class PropertyController : ControllerBase
         return Ok(property);
     }
 
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetById(Guid id)
+    {
+        var organizationId = GetOrganizationId();
+        var property = await _propertyService.GetById(organizationId, id);
+        
+        if (property == null)
+            return NotFound();
+        
+        return Ok(property);
+    }
+
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
@@ -32,7 +46,7 @@ public class PropertyController : ControllerBase
         return Ok(properties);
     }
 
-    [HttpGet("{id}")]
+    [HttpPut("{id}")] 
     public async Task<IActionResult> Update(Guid id, [FromBody] UpdatePropertyRequest request)
     {
         var organizationId = GetOrganizationId();
@@ -40,7 +54,7 @@ public class PropertyController : ControllerBase
 
         if (property == null)
             return NotFound();
-        
+    
         return Ok(property);
     }
     
